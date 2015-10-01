@@ -1,6 +1,7 @@
 package modelo;
 
 public class Locacao {
+
     protected int codigolocacao;
     protected Filme filme;
     protected Usuario usuario;
@@ -20,7 +21,7 @@ public class Locacao {
         this.usuario = usuario;
         this.valor = valor;
     }
-    
+
     public int getCodigolocacao() {
         return codigolocacao;
     }

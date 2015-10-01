@@ -23,84 +23,84 @@
             function excluirUsuario(usuarioCodigo) {
                 try {
                     $.ajax({
-                        async    : false,
-                        data     : {
+                        async: false,
+                        data: {
                             requisicao: "excluir",
                             usucodigo: usuarioCodigo
                         },
-                        type     : "GET",
-                        url      : 'manutencao/manutencaousuarios.jsp',
-                        dataType : 'json',
-                        success  : function(oRetorno) {
-                            if(oRetorno["erro"] == "ok") {
+                        type: "GET",
+                        url: 'manutencao/manutencaousuarios.jsp',
+                        dataType: 'json',
+                        success: function (oRetorno) {
+                            if (oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("manutencao-excluir", oRetorno["resposta"]);
                             }
                         }
-                    });         
+                    });
                 }
-                catch(e){
-                    alert("ERRO: "+e);
+                catch (e) {
+                    alert("ERRO: " + e);
                 }
             }
-            function incluirUsuario(){
+            function incluirUsuario() {
                 try {
                     $.ajax({
-                        async    : false,
-                        data     : {
+                        async: false,
+                        data: {
                             requisicao: "incluir",
                             usunome: $("#descricao").val()
                         },
-                        type     : "GET",
-                        url      : 'manutencao/manutencaousuarios.jsp',
-                        dataType : 'json',
-                        success  : function(oRetorno) {
-                            if(oRetorno["erro"] == "ok") {
+                        type: "GET",
+                        url: 'manutencao/manutencaousuarios.jsp',
+                        dataType: 'json',
+                        success: function (oRetorno) {
+                            if (oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("incluir", oRetorno["resposta"]);
                             }
                         }
-                    });         
+                    });
                 }
-                catch(e){
-                    alert("ERRO: "+e);
+                catch (e) {
+                    alert("ERRO: " + e);
                 }
             }
-            
-            function chamaAlterarUsuario(codigo, descricao){
+
+            function chamaAlterarUsuario(codigo, descricao) {
                 $("#descricao-alterar").val(descricao);
                 $("#codigo-alterar").val(codigo);
                 $("#container-alterar").trigger("click");
             }
-            
+
             function alterarUsuario() {
                 try {
                     $.ajax({
-                        async    : false,
-                        data     : {
-                            requisicao : "alterar",
-                            usucodigo  : $("#codigo-alterar").val(),
-                            usunome    : $("#descricao-alterar").val()
+                        async: false,
+                        data: {
+                            requisicao: "alterar",
+                            usucodigo: $("#codigo-alterar").val(),
+                            usunome: $("#descricao-alterar").val()
                         },
-                        type     : "GET",
-                        url      : 'manutencao/manutencaousuarios.jsp',
-                        dataType : 'json',
-                        success  : function(oRetorno) {
-                            if(oRetorno["erro"] == "ok") {
+                        type: "GET",
+                        url: 'manutencao/manutencaousuarios.jsp',
+                        dataType: 'json',
+                        success: function (oRetorno) {
+                            if (oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("alterar", oRetorno["resposta"]);
                             }
                         }
-                    });         
+                    });
                 }
-                catch(e){
-                    alert("ERRO: "+e);
+                catch (e) {
+                    alert("ERRO: " + e);
                 }
             }
         </script>
@@ -117,7 +117,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a href="../index.html">
+                    <a href="../index.jsp">
                         <div class="logo"></div>
                     </a>
                 </div>
@@ -145,7 +145,7 @@
                     <div class="sidebar-nav navbar-default navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="../index.html"><i class="fa fa-home fa-fw"></i> Home</a>
+                                <a href="../index.jsp"><i class="fa fa-home fa-fw"></i> Home</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-tasks fa-fw"></i> Filme<span class="fa arrow"></span></a>
@@ -268,11 +268,11 @@
             <script src="../lib/js/dataTables.bootstrap.min.js"></script>
             <script src="../lib/js/main.js"></script>
             <script>
-                $(document).ready(function() {
-                    $('#data-table-usuarios').DataTable({
-                        responsive: true
-                    });
-                });
+                                            $(document).ready(function () {
+                                                $('#data-table-usuarios').DataTable({
+                                                    responsive: true
+                                                });
+                                            });
             </script>
         </div>
     </body>

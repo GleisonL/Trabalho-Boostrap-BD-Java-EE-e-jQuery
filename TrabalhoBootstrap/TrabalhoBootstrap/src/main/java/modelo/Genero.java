@@ -7,9 +7,10 @@ package modelo;
 
 /**
  *
- * @author Patrick
+ * @author Gleison
  */
 public class Genero {
+
     private int codigo;
     private String nome;
 

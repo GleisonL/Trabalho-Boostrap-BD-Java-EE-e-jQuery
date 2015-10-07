@@ -1,7 +1,6 @@
 package modelo;
 
 public class Filme {
-
     protected int codigo;
     protected String nome;
     protected String descricao;
@@ -16,7 +15,7 @@ public class Filme {
         this.nome = nome;
         this.descricao = descricao;
     }
-
+    
     public int getCodigo() {
         return codigo;
     }

@@ -23,90 +23,93 @@
         <link href="../lib/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <script>
             function excluirMensagem(mensagCodigo) {
-            try {
-            $.ajax({
-            async    : false,
-                    data     : {
-                    requisicao: "excluir",
+                try {
+                    $.ajax({
+                        async    : false,
+                        data     : {
+                            requisicao: "excluir",
                             codigo: mensagCodigo
-                    }, type     : "GET",
-                    type     : "GET",
-                    url      : 'manutencao/manutencaomensagem.jsp',
-                    dataType : 'json',
-                    success  : function(oRetorno) {
-                    if (oRetorno["erro"] == "ok") {
-                    reloadPagina();
-                    }
-                    else {
-                    alerta("manutencao-excluir", oRetorno["resposta"]);
-                    }
-                    }
-            });
-            }
-            catch (e){
-            alert("ERRO: " + e);
-            }
-            }
-            function incluirMensagem(){
-            try {
-            $.ajax({
-            async    : false,
-                    data     : {
-                    requisicao: "incluir",
-                            codigo: $("#codigo").val()
-                            titulo $("#titulo").val()
-                            descricao $("#descricao").val()
-                    },
-                    type     : "GET",
-                    url      : 'manutencao/manutencaomensagem.jsp',
-                    dataType : 'json',
-                    success  : function(oRetorno) {
-                    if (oRetorno["erro"] == "ok") {
-                    reloadPagina();
-                    }
-                    else {
-                    alerta("incluir", oRetorno["resposta"]);
-                    }
-                    }
-            });
-            }
-            catch (e){
-            alert("ERRO: " + e);
-            }
-            }
+                        }, 
 
+                        type     : "GET",
+                        url      : 'manutencao/manutencaomensagem.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
+                                reloadPagina();
+                            }
+                            else {
+                                alerta("manutencao-excluir", oRetorno["resposta"]);
+                            }
+                        }
+                    });         
+                }
+                catch(e){
+                    alert("ERRO: "+e);
+                }
+            }
+            
+            function incluirMensagem() {
+                try {
+                    $.ajax({
+                        async    : false,
+                        data     : {
+                            requisicao: "incluir",
+                            codigo: $("#codigo").val(),
+                            titulo: $("#titulo").val(),
+                            descricao: $("#descricao").val()
+                        },
+                        type     : "GET",
+                        url      : 'manutencao/manutencaomensagem.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
+                                reloadPagina();
+                            }
+                            else {
+                                alerta("incluir", oRetorno["resposta"]);
+                            }
+                        }
+                    });         
+                }
+                catch(e){
+                    alert("ERRO: "+e);
+                }
+            }
+            
             function chamaAlterarMensagem(codigo, titulo, texto){
-            $("#descricao-alterar").val(texto);
-                    $("#codigo-alterar").val(codigo);
-                    $("#codigo-alterar").val(titulo);
-                    $("#container-alterar").trigger("click");
+                $("#codigo-alterar").val(codigo);
+                $("#titulo-alterar").val(titulo);
+                $("#descricao-alterar").val(texto);
+                $("#container-alterar").trigger("click");
             }
-
+            
             function alterarMensagem() {
-            try {
-            $.ajax({
-            async    : false,
-                    data     : {
-                    requisicao : "alterar",
-                            gencodigo  : $("#codigo-alterar").val(),
-                            gennome    : $("#descricao-alterar").val()
-                    },
-                    type     : "GET",
-                    url      : 'manutencao/manutencaomensagem.jsp',
-                    dataType : 'json',
-                    success  : function(oRetorno) {
-                    if (oRetorno["erro"] == "ok") {
-                    reloadPagina();
-                    }
-                    else {
-                    alerta("alterar", oRetorno["resposta"]);
-                    }
-                    }
-            });
-            }
-            catch (e){
-            alert("ERRO: " + e);
-            }
+                try {
+                    $.ajax({
+                        async    : false,
+                        data     : {
+                            requisicao : "alterar",
+                            codigo  : $("#codigo-alterar").val(),
+                            titulo    : $("#titulo-alterar").val(),
+                            descricao : $("#descricao-alterar").val()
+                        },
+                        type     : "GET",
+                        url      : 'manutencao/manutencaomensagem.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
+                                reloadPagina();
+                            }
+                            else {
+                                alerta("alterar", oRetorno["resposta"]);
+                            }
+                        }
+                    });         
+                }
+                catch(e){
+                    alert("ERRO: "+e);
+                }
             }
         </script>
     </head>
@@ -181,7 +184,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Gêneros</h1>
+                        <h1 class="page-header">Mensagens</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -234,15 +237,15 @@
                                     <div class="modal-body">
                                         <div class="col-lg-12" id="container-mensagem-manutencao" name="container-mensagem-incluir"></div>
                                         Codigo
-                                        <input type="text" id="descricao" name="codigo" class="form-control" maxlength="50">
+                                        <input type="text" id="codigo" name="codigo" class="form-control" maxlength="50">
                                         Titulo
-                                        <input type="text" id="descricao" name="titulo" class="form-control" maxlength="100">
+                                        <input type="text" id="titulo" name="titulo" class="form-control" maxlength="100">
                                         Descrição
                                         <input type="text" id="descricao" name="descricao" class="form-control" maxlength="100">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-primary" data-dismiss="modal" id="close-modal-genero">Cancelar</button>
-                                        <button type="button" class="btn btn-primary" onclick="incluirMensagem()"i>Incluir</button>
+                                        <button type="button" class="btn btn-primary" onclick="incluirMensagem()">Incluir</button>
                                     </div>
                                 </div>
                             </div>
@@ -258,11 +261,11 @@
                                     <div class="modal-body">
                                         <div class="col-lg-12" id="container-mensagem-alterar" name="container-mensagem-alterar"></div>
                                         Codigo
-                                        <input type="text" id="descricao" name="codigo-alterar" class="form-control" maxlength="50">
+                                        <input type="text" id="codigo-alterar" name="codigo-alterar" class="form-control" maxlength="50">
                                         Titulo
-                                        <input type="text" id="descricao" name="titulo-alterar" class="form-control" maxlength="100">
+                                        <input type="text" id="titulo-alterar" name="titulo-alterar" class="form-control" maxlength="100">
                                         Descrição
-                                        <input type="text" id="descricao" name="descricao-alterar" class="form-control" maxlength="100">
+                                        <input type="text" id="descricao-alterar" name="descricao-alterar" class="form-control" maxlength="100">
                                         <input type="hidden" id="codigo-alterar" name="codigo-alterar">
                                     </div>
                                     <div class="modal-footer">
@@ -283,11 +286,11 @@
             <script src="../lib/js/dataTables.bootstrap.min.js"></script>
             <script src="../lib/js/main.js"></script>
             <script>
-                                                    $(document).ready(function() {
-                                            $('#data-table-generos').DataTable({
-                                            responsive: true
-                                            });
-                                            });
+                $(document).ready(function() {
+                    $('#data-table-generos').DataTable({
+                        responsive: true
+                    });
+                });
             </script>
         </div>
     </body>

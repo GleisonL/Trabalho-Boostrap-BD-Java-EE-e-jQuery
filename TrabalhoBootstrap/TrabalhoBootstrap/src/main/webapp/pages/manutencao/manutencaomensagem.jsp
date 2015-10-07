@@ -15,25 +15,25 @@
     
     String requisicao = request.getParameter("requisicao");
     if(requisicao.equals("excluir")) {
-        int codigo = Integer.valueOf(request.getParameter("reccodigo"));
+        int codigo = Integer.valueOf(request.getParameter("codigo"));
         Connection conexao = Conexao.getConexao();
         Map<String, String> retorno = RecadoDB.excluirMensagem(codigo, conexao);
         resposta.put("resposta", retorno.get("mensagem"));
         resposta.put("erro",     retorno.get("retorno"));
     }
     else if(requisicao.equals("incluir")) {
-        int codigo = Integer.valueOf(request.getParameter("reccodigo"));
-        String rectitulo = String.valueOf(request.getParameter("rectitulo"));
-        String recDesc = String.valueOf(request.getParameter("recdescricao"));
+        int codigo = Integer.valueOf(request.getParameter("codigo"));
+        String rectitulo = String.valueOf(request.getParameter("titulo"));
+        String recDesc = String.valueOf(request.getParameter("descricao"));
         Connection conexao = Conexao.getConexao();
         Map<String, String> retorno = RecadoDB.incluirMensagem(new Recado(codigo,rectitulo, recDesc), conexao);
         resposta.put("resposta", retorno.get("mensagem"));
         resposta.put("erro",     retorno.get("retorno"));
     }
     else if(requisicao.equals("alterar")) {
-        int reccodigo = Integer.valueOf(request.getParameter("reccodigo"));
-        String rectitulo = String.valueOf(request.getParameter("rectitulo"));
-        String recDesc = String.valueOf(request.getParameter("recDescricao"));
+        int reccodigo = Integer.valueOf(request.getParameter("codigo"));
+        String rectitulo = String.valueOf(request.getParameter("titulo"));
+        String recDesc = String.valueOf(request.getParameter("descricao"));
         Connection conexao = Conexao.getConexao();
         Map<String, String> retorno = RecadoDB.alterarMensagem(new Recado(reccodigo, rectitulo, recDesc), conexao);
         resposta.put("resposta", retorno.get("mensagem"));

@@ -7,14 +7,12 @@ package modelo;
 
 /**
  *
- * @author Gleison
+ * @author Patrick
  */
 public class Recado {
-
     private int codigo;
     private String titulo;
     private String texto;
-
     public Recado(int codigo, String titulo, String texto) {
         this.codigo = codigo;
         this.titulo = titulo;
@@ -41,6 +39,8 @@ public class Recado {
         this.titulo = titulo;
     }
 
+    
+    
     public String getTexto() {
         return texto;
     }
@@ -48,5 +48,5 @@ public class Recado {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-
+    
 }

@@ -23,84 +23,85 @@
             function excluirGenero(generoCodigo) {
                 try {
                     $.ajax({
-                        async: false,
-                        data: {
+                        async    : false,
+                        data     : {
                             requisicao: "excluir",
                             gencodigo: generoCodigo
-                        }, type: "GET",
+                        },                        type     : "GET",
+
                         type     : "GET",
-                                url: 'manutencao/manutencaogeneros.jsp',
-                        dataType: 'json',
-                        success: function (oRetorno) {
-                            if (oRetorno["erro"] == "ok") {
+                        url      : 'manutencao/manutencaogeneros.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("manutencao-excluir", oRetorno["resposta"]);
                             }
                         }
-                    });
+                    });         
                 }
-                catch (e) {
-                    alert("ERRO: " + e);
+                catch(e){
+                    alert("ERRO: "+e);
                 }
             }
-            function incluirGenero() {
+            function incluirGenero(){
                 try {
                     $.ajax({
-                        async: false,
-                        data: {
+                        async    : false,
+                        data     : {
                             requisicao: "incluir",
                             gennome: $("#descricao").val()
                         },
-                        type: "GET",
-                        url: 'manutencao/manutencaogeneros.jsp',
-                        dataType: 'json',
-                        success: function (oRetorno) {
-                            if (oRetorno["erro"] == "ok") {
+                        type     : "GET",
+                        url      : 'manutencao/manutencaogeneros.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("incluir", oRetorno["resposta"]);
                             }
                         }
-                    });
+                    });         
                 }
-                catch (e) {
-                    alert("ERRO: " + e);
+                catch(e){
+                    alert("ERRO: "+e);
                 }
             }
-
-            function chamaAlterarGenero(codigo, descricao) {
+            
+            function chamaAlterarGenero(codigo, descricao){
                 $("#descricao-alterar").val(descricao);
                 $("#codigo-alterar").val(codigo);
                 $("#container-alterar").trigger("click");
             }
-
+            
             function alterarGenero() {
                 try {
                     $.ajax({
-                        async: false,
-                        data: {
-                            requisicao: "alterar",
-                            gencodigo: $("#codigo-alterar").val(),
-                            gennome: $("#descricao-alterar").val()
+                        async    : false,
+                        data     : {
+                            requisicao : "alterar",
+                            gencodigo  : $("#codigo-alterar").val(),
+                            gennome    : $("#descricao-alterar").val()
                         },
-                        type: "GET",
-                        url: 'manutencao/manutencaogeneros.jsp',
-                        dataType: 'json',
-                        success: function (oRetorno) {
-                            if (oRetorno["erro"] == "ok") {
+                        type     : "GET",
+                        url      : 'manutencao/manutencaogeneros.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("alterar", oRetorno["resposta"]);
                             }
                         }
-                    });
+                    });         
                 }
-                catch (e) {
-                    alert("ERRO: " + e);
+                catch(e){
+                    alert("ERRO: "+e);
                 }
             }
         </script>
@@ -132,7 +133,7 @@
                                 <a href="#"><i class="fa fa-user fa-fw"></i>Perfil de usuário</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
+                                <a href="mensagem.jsp"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -268,11 +269,11 @@
             <script src="../lib/js/dataTables.bootstrap.min.js"></script>
             <script src="../lib/js/main.js"></script>
             <script>
-                                            $(document).ready(function () {
-                                                $('#data-table-generos').DataTable({
-                                                    responsive: true
-                                                });
-                                            });
+                $(document).ready(function() {
+                    $('#data-table-generos').DataTable({
+                        responsive: true
+                    });
+                });
             </script>
         </div>
     </body>

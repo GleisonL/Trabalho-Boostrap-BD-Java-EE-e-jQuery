@@ -1,3 +1,9 @@
+<%-- 
+    Document   : index
+    Created on : 30/09/2015, 19:41:33
+    Author     : Patrick
+--%>
+
 <%@page import="modelo.Recado"%>
 <%@page import="controle.RecadoDB"%>
 <%@page import="java.util.ArrayList"%>
@@ -103,81 +109,34 @@
                             <div class="panel-body">
                                 <ul class="chat">
                                     <%
-                                        Connection conexao = Conexao.getConexao();
-                                        ArrayList lista = RecadoDB.getListaRecados(conexao);
-                                        int indice = 0;
-                                        if (lista.size() > 5) {
-                                            indice = 5;
-                                        } else {
-                                            indice = lista.size();
-                                        }
-                                        for (int i = 0; i < indice; i++) {
-                                            Recado recado = (Recado) lista.get(i);%>
-                                    <li class="left clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font"><% out.println(recado.getTitulo()); %></strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 1 hora atrás
-                                            </small>
-                                        </div>
-                                        <p>
-                                            <% out.println(recado.getTexto()); %>
-                                        </p>
-                                    </li>
-                                    <%      }
-                                    %>
-                                    <!--   <li class="left clearfix">
-                                           <div class="header">
-                                               <strong class="primary-font">Treino de Quinta</strong>
-                                               <small class="pull-right text-muted">
-                                                   <i class="fa fa-clock-o fa-fw"></i> 1 hora atrás
-                                               </small>
-                                           </div>
-                                           <p>
-                                               Quinta feira devido ao feriado estaremos abertos das 8:00 às 19:00 horas, 
-                                               venham mais cedo e mantenham seus treinos em dia!
-                                           </p>
-                                       </li>
-                                       <li class="left clearfix">
-                                           <div class="header">
-                                               <strong class="primary-font">Treino de Quinta</strong>
-                                               <small class="pull-right text-muted">
-                                                   <i class="fa fa-clock-o fa-fw"></i> 1 hora atrás
-                                               </small>
-                                           </div>
-                                           <p>
-                                               Quinta feira devido ao feriado estaremos abertos das 8:00 às 19:00 horas, 
-                                               venham mais cedo e mantenham seus treinos em dia!
-                                           </p>
-                                       </li>
-                                       <li class="left clearfix">
-                                           <div class="header">
-                                               <strong class="primary-font">Treino de Quinta</strong>
-                                               <small class="pull-right text-muted">
-                                                   <i class="fa fa-clock-o fa-fw"></i> 1 hora atrás
-                                               </small>
-                                           </div>
-                                           <p>
-                                               Quinta feira devido ao feriado estaremos abertos das 8:00 às 19:00 horas, 
-                                               venham mais cedo e mantenham seus treinos em dia!
-                                           </p>
-                                       </li>
-                                       <li class="left clearfix">
-                                           <div class="header">
-                                               <strong class="primary-font">Treino de Quinta</strong>
-                                               <small class="pull-right text-muted">
-                                                   <i class="fa fa-clock-o fa-fw"></i> 1 hora atrás
-                                               </small>
-                                           </div>
-                                           <p>
-                                               Quinta feira devido ao feriado estaremos abertos das 8:00 às 19:00 horas, 
-                                               venham mais cedo!
-                                           </p>
-                                       </li>-->
+                                                Connection conexao = Conexao.getConexao();
+                                                ArrayList lista = RecadoDB.getListaRecados(conexao);
+                                                int indice = 0;
+                                                if (lista.size() > 5) {
+                                                     indice = 5;
+                                                }
+                                                else{
+                                                     indice = lista.size();
+                                                }
+                                                for (int i = 0; i < indice; i++) {
+                                                    Recado recado = (Recado) lista.get(i);%>
+                                                    <li class="left clearfix">
+                                                        <div class="header">
+                                                            <strong class="primary-font"><% out.println(recado.getTitulo()); %></strong>
+                                                            <small class="pull-right text-muted">
+                                                                <i class="fa fa-clock-o fa-fw"></i> 1 hora atrás
+                                                            </small>
+                                                        </div>
+                                                        <p>
+                                                           <% out.println(recado.getTexto()); %>
+                                                        </p>
+                                                    </li>
+                                          <%      }
+                                            %>
                                 </ul>
-                                <a class="btn btn-default btn-block">Ver mais</a>
+                                 <a href="pages/mensagem.jsp" class="btn btn-default btn-block">Ver mais</a>
                             </div>
-
+                            
                         </div>
                     </div>
                 </div>

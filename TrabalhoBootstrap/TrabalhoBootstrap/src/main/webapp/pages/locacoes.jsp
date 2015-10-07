@@ -20,31 +20,31 @@
         <link href="../lib/css/metisMenu.min.css" rel="stylesheet">
         <link href="../lib/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <script>
-            function incluirLocacao() {
+            function incluirLocacao(){
                 try {
                     $.ajax({
-                        async: false,
-                        data: {
-                            requisicao: "incluir",
-                            usuario: $("#usuario").val(),
-                            filme: $("#filme").val(),
-                            valor: $("#valor").val()
+                        async    : false,
+                        data     : {
+                            requisicao : "incluir",
+                            usuario    : $("#usuario").val(),
+                            filme      : $("#filme").val(),
+                            valor      : $("#valor").val()
                         },
-                        type: "GET",
-                        url: 'manutencao/manutencaolocacoes.jsp',
-                        dataType: 'json',
-                        success: function (oRetorno) {
-                            if (oRetorno["erro"] == "ok") {
+                        type     : "GET",
+                        url      : 'manutencao/manutencaolocacoes.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("incluir", oRetorno["resposta"]);
                             }
                         }
-                    });
+                    });         
                 }
-                catch (e) {
-                    alert("ERRO: " + e);
+                catch(e){
+                    alert("ERRO: "+e);
                 }
             }
         </script>
@@ -76,7 +76,7 @@
                                 <a href="#"><i class="fa fa-user fa-fw"></i>Perfil de usuário</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
+                                <a href="mensagem.jsp"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -150,7 +150,7 @@
                                                     Locacao locacao = (Locacao) lista.get(i);
                                                     out.println("<tr class='odd gradeX'>");
                                                     out.println("<td>" + locacao.getCodigolocacao() + "</td>");
-                                                    out.println("<td>" + locacao.getFilme().getNome() + "</td>");
+                                                    out.println("<td>" + locacao.getFilme().getNome()+ "</td>");
                                                     out.println("<td>" + locacao.getUsuario().getNome() + "</td>");
                                                     out.println("<td>" + locacao.getValor() + "</td>");
                                                     out.println("<td>" + locacao.getData() + "</td>");
@@ -196,11 +196,11 @@
             <script src="../lib/js/dataTables.bootstrap.min.js"></script>
             <script src="../lib/js/main.js"></script>
             <script>
-                                            $(document).ready(function () {
-                                                $('#data-table-locacaos').DataTable({
-                                                    responsive: true
-                                                });
-                                            });
+                $(document).ready(function() {
+                    $('#data-table-locacaos').DataTable({
+                        responsive: true
+                    });
+                });
             </script>
         </div>
     </body>

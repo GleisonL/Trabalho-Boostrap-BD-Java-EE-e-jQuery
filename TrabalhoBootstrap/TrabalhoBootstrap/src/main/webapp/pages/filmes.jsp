@@ -23,87 +23,87 @@
             function excluirFilme(filCodigo) {
                 try {
                     $.ajax({
-                        async: false,
-                        data: {
-                            requisicao: "excluir",
-                            filcodigo: filCodigo
+                        async    : false,
+                        data     : {
+                            requisicao : "excluir",
+                            filcodigo  : filCodigo
                         },
-                        type: "GET",
-                        url: 'manutencao/manutencaofilmes.jsp',
-                        dataType: 'json',
-                        success: function (oRetorno) {
-                            if (oRetorno["erro"] == "ok") {
+                        type     : "GET",
+                        url      : 'manutencao/manutencaofilmes.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("manutencao-excluir", oRetorno["resposta"]);
                             }
                         }
-                    });
+                    });         
                 }
-                catch (e) {
-                    alert("ERRO: " + e);
+                catch(e){
+                    alert("ERRO: "+e);
                 }
             }
-            function incluirFilme() {
+            function incluirFilme(){
                 try {
                     $.ajax({
-                        async: false,
-                        data: {
-                            requisicao: "incluir",
-                            filnome: $("#nome").val(),
-                            fildesricao: $("#descricao").val()
+                        async    : false,
+                        data     : {
+                            requisicao  : "incluir",
+                            filnome     : $("#nome").val(),
+                            fildesricao : $("#descricao").val()
                         },
-                        type: "GET",
-                        url: 'manutencao/manutencaofilmes.jsp',
-                        dataType: 'json',
-                        success: function (oRetorno) {
-                            if (oRetorno["erro"] == "ok") {
+                        type     : "GET",
+                        url      : 'manutencao/manutencaofilmes.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("incluir", oRetorno["resposta"]);
                             }
                         }
-                    });
+                    });         
                 }
-                catch (e) {
-                    alert("ERRO: " + e);
+                catch(e){
+                    alert("ERRO: "+e);
                 }
             }
-
-            function chamaAlterarFilme(codigo, nome, descricao) {
+            
+            function chamaAlterarFilme(codigo, nome, descricao){
                 $("#codigo-alterar").val(codigo);
                 $("#nome-alterar").val(nome);
                 $("#descricao-alterar").val(descricao);
                 $("#container-alterar").trigger("click");
             }
-
+            
             function alterarFilme() {
                 try {
                     $.ajax({
-                        async: false,
-                        data: {
-                            requisicao: "alterar",
-                            filcodigo: $("#codigo-alterar").val(),
-                            filnome: $("#nome-alterar").val(),
-                            fildescricao: $("#descricao-alterar").val()
+                        async    : false,
+                        data     : {
+                            requisicao   : "alterar",
+                            filcodigo    : $("#codigo-alterar").val(),
+                            filnome      : $("#nome-alterar").val(),
+                            fildescricao : $("#descricao-alterar").val()
                         },
-                        type: "GET",
-                        url: 'manutencao/manutencaofilmes.jsp',
-                        dataType: 'json',
-                        success: function (oRetorno) {
-                            if (oRetorno["erro"] == "ok") {
+                        type     : "GET",
+                        url      : 'manutencao/manutencaofilmes.jsp',
+                        dataType : 'json',
+                        success  : function(oRetorno) {
+                            if(oRetorno["erro"] == "ok") {
                                 reloadPagina();
                             }
                             else {
                                 alerta("alterar", oRetorno["resposta"]);
                             }
                         }
-                    });
+                    });         
                 }
-                catch (e) {
-                    alert("ERRO: " + e);
+                catch(e){
+                    alert("ERRO: "+e);
                 }
             }
         </script>
@@ -132,10 +132,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i>Perfil de usuário</a>
+                                <a href="index.jsp"><i class="fa fa-user fa-fw"></i>Perfil de usuário</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
+                                <a href="mensagem.jsp"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
                             </li>
                             <li class="divider"></li>
                             <li>
@@ -209,10 +209,10 @@
                                                     out.println("<tr class='odd gradeX'>");
                                                     out.println("<td>" + genero.getCodigo() + "</td>");
                                                     out.println("<td>" + genero.getNome() + "</td>");
-                                                    out.println("<td>" + genero.getDescricao() + "</td>");
+                                                    out.println("<td>" + genero.getDescricao()+ "</td>");
                                                     out.println("<td style='width:80px;'>");
                                                     out.println("<a href='javascript:excluirFilme(" + genero.getCodigo() + ")'><i class='fa fa-trash fa-fw' style='font-size: 20px;'></i></a>");
-                                                    out.println("<a href='javascript:chamaAlterarFilme(" + genero.getCodigo() + ", \"" + genero.getNome() + "\", \"" + genero.getDescricao() + "\")'><i class='fa fa-file-text-o fa-fw' style='font-size: 20px;'></i></a>");
+                                                    out.println("<a href='javascript:chamaAlterarFilme(" + genero.getCodigo() + ", \"" + genero.getNome() + "\", \"" + genero.getDescricao()+ "\")'><i class='fa fa-file-text-o fa-fw' style='font-size: 20px;'></i></a>");
                                                     out.println("</td>");
                                                     out.println("</tr>");
                                                 }
@@ -277,11 +277,11 @@
             <script src="../lib/js/dataTables.bootstrap.min.js"></script>
             <script src="../lib/js/main.js"></script>
             <script>
-                                            $(document).ready(function () {
-                                                $('#data-table-filmes').DataTable({
-                                                    responsive: true
-                                                });
-                                            });
+                $(document).ready(function() {
+                    $('#data-table-filmes').DataTable({
+                        responsive: true
+                    });
+                });
             </script>
         </div>
     </body>

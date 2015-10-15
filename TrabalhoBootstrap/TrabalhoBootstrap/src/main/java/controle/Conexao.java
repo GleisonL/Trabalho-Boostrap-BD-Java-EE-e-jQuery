@@ -17,7 +17,7 @@ public class Conexao {
     private static final String servidor = "localhost";
     private static final String banco = "postgres";
     private static final String usuario = "postgres";
-    private static final String senha = "123";
+    private static final String senha = "admin";
     private static final String porta = "5432";
     private static final String url = "jdbc:postgresql://"+servidor+":"+porta+"/"+banco;
     private static final String driver = "org.postgresql.Driver";

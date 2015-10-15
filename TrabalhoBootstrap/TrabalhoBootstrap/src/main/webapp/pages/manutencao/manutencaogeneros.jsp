@@ -9,7 +9,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     response.setContentType("application/json"); 
-    response.setCharacterEncoding("utf-8"); 
+    response.setCharacterEncoding("UTF-8"); 
     Map<String, String> resposta = new LinkedHashMap<String, String>();
     
     String requisicao = request.getParameter("requisicao");

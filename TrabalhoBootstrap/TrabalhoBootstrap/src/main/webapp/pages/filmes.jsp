@@ -52,7 +52,7 @@
                         data     : {
                             requisicao  : "incluir",
                             filnome     : $("#nome").val(),
-                            fildecricao : $("#descricao").val()
+                            fildescricao : $("#descricao").val()
                         },
                         type     : "GET",
                         url      : 'manutencao/manutencaofilmes.jsp',

@@ -134,6 +134,9 @@
                             <li>
                                 <a href="mensagem.jsp"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
                             </li>
+                            <li>
+                                <a href="chamaRelatorioUsuario.jsp"><i class="fa fa-envelope fa-fw"></i> Relatório Usuários</a>
+                            </li>
                             <li class="divider"></li>
                             <li>
                                 <a href="#"><i class="fa fa-sign-out fa-fw"></i> Sair</a>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioSimplesFilmes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="12bd82d1-9c36-4377-8ac9-0080b1b199e4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select filcodigo
+	,filnome
+	,fildescricao
+from filme
+]]>
+	</queryString>
+	<field name="filcodigo" class="java.lang.Long"/>
+	<field name="filnome" class="java.lang.String"/>
+	<field name="fildescricao" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="13" width="555" height="54" uuid="ff70d724-6cd7-4f77-a136-a389747839ae"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório de Filmes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="100" height="20" uuid="fb8dad7d-e685-4ef2-ad8f-c2faa434a201"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="15" width="175" height="20" uuid="3043d450-f5e5-4c7e-86d5-57dd53f4bed9"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome do Filme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="15" width="253" height="20" uuid="d4e22daf-1bf4-4c5e-9da0-1cac67e31bb7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descrição]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="e578bce3-3ba9-4af6-89b9-e8d22486e40b"/>
+				<textFieldExpression><![CDATA[$F{filcodigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="175" height="20" uuid="99b51848-0e7c-4931-8916-e9eb4c07d51a"/>
+				<textFieldExpression><![CDATA[$F{filnome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="0" width="243" height="20" uuid="ea78db8b-a3fa-4267-ba8b-5a8747e473cf"/>
+				<textFieldExpression><![CDATA[$F{fildescricao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="27" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="0" y="0" width="100" height="20" uuid="426f4a56-218a-4521-8a6a-0982a06430aa"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="494" y="0" width="61" height="20" uuid="789c25e2-bc2d-424b-8106-97ff8bfc4e41"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="144" height="20" uuid="7df42a89-3f1a-4c08-b306-1f8a1f312056"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="153" y="0" width="100" height="20" uuid="966c01a6-24ff-4972-9b82-6f5953e6f988"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="153" height="20" uuid="83c91c07-dccf-4847-8698-55eb90d5b407"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Quantidade de Filmes:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

@@ -14,41 +14,38 @@ import java.sql.SQLException;
  * @author Patrick
  */
 public class Conexao {
+
     private static final String servidor = "localhost";
-    private static final String banco = "postgres";
+    private static final String banco = "locadora";
     private static final String usuario = "postgres";
     private static final String senha = "admin";
     private static final String porta = "5432";
-    private static final String url = "jdbc:postgresql://"+servidor+":"+porta+"/"+banco;
+    private static final String url = "jdbc:postgresql://" + servidor + ":" + porta + "/" + banco;
     private static final String driver = "org.postgresql.Driver";
     //private static String driver = "com.mysql.jdbc.Driver";
-    
-    public static Connection getConexao(){
+
+    public static Connection getConexao() {
         Connection conexao = null;
-        try{
+        try {
             Class.forName(driver);
             conexao = DriverManager.getConnection(url, usuario, senha);
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println("Erro de conexão: " + e.getMessage());
-        }
-        catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             System.out.println("Erro de driver: " + e.getMessage());
-        }
-        finally{
+        } finally {
             return conexao;
         }
-    } 
-    
-    public static void fechaConexao(Connection conexao){
-        if(conexao != null){
-            try{
+    }
+
+    public static void fechaConexao(Connection conexao) {
+        if (conexao != null) {
+            try {
                 conexao.close();
-            }
-            catch(SQLException e){
-                System.out.println("Erro ao fechar a conexão: "+e.getMessage());
+            } catch (SQLException e) {
+                System.out.println("Erro ao fechar a conexão: " + e.getMessage());
             }
         }
     }
-    
+
 }

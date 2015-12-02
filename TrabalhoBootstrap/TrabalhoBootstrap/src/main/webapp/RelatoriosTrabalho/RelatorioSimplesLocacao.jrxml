@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RelatorioSimplesLocacao" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ffd0a12c-29a0-4767-b639-6de4ba347403">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select loccodigo
+	,locdata
+	,locvalor
+	,usuario.usucodigo
+	,filme.filcodigo
+          ,filme.filnome
+	,usuario.usunome
+from locacao
+ join filme
+  on filme.filcodigo = locacao.filcodigo
+join usuario
+  on usuario.usucodigo = locacao.usucodigo]]>
+	</queryString>
+	<field name="loccodigo" class="java.lang.Long"/>
+	<field name="locdata" class="java.sql.Date"/>
+	<field name="locvalor" class="java.math.BigDecimal"/>
+	<field name="usucodigo" class="java.lang.Long"/>
+	<field name="filcodigo" class="java.lang.Long"/>
+	<field name="filnome" class="java.lang.String"/>
+	<field name="usunome" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="82" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="14" width="555" height="54" uuid="14bfc372-0772-4f39-a8ef-d19c712f06a0"/>
+				<textElement textAlignment="Center">
+					<font fontName="Consolas" size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatorio de Locacao]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="81" height="20" uuid="f70ff0f7-d404-4b5e-9e4b-f5ce1be2ff2d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="15" width="114" height="20" uuid="7360fc1c-f57a-4086-a94d-976f84d3ad99"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="15" width="120" height="20" uuid="ed7676ef-4a54-41c4-b1ce-4b8fd24d76af"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="172" y="15" width="149" height="20" uuid="c8f8882b-8419-4531-88c3-c0244b69d556"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Filme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="15" width="91" height="20" uuid="9edf4ae8-3caf-41f1-83c7-fc3ece2a47d2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome Usuario]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="81" height="20" uuid="ac6f3b8c-c9be-4390-a9a4-5cf0285ee5c2"/>
+				<textFieldExpression><![CDATA[$F{loccodigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="0" width="120" height="20" uuid="f7ce18a3-c1c2-47f2-97c5-010f516efcba"/>
+				<textFieldExpression><![CDATA[$F{locdata}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="0" width="112" height="20" uuid="df694238-36f4-491f-9445-93947f44c43a"/>
+				<textFieldExpression><![CDATA[$F{locvalor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="172" y="0" width="149" height="20" uuid="261d0c7e-235e-40d9-ad69-b9a21adf9546"/>
+				<textFieldExpression><![CDATA[$F{filnome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="81" y="0" width="91" height="20" uuid="78d49746-8a65-44d4-b4c0-9929b7b72e4c"/>
+				<textFieldExpression><![CDATA[$F{usunome}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="0" y="0" width="100" height="20" uuid="6f671476-109d-4440-aacf-2da86583251c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="144" height="20" uuid="ef975c84-6042-4e5d-bf29-32d8743d423f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="494" y="0" width="61" height="20" uuid="b594f30c-3fb8-4693-bed0-b13a4e99cd57"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="153" y="0" width="100" height="20" uuid="96b82feb-2fec-41d6-84ce-16f95bfa5d5a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="153" height="20" uuid="480ecf8f-08e5-4c7c-b3a0-ac9811a4e96a"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Quantidade de Locações:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

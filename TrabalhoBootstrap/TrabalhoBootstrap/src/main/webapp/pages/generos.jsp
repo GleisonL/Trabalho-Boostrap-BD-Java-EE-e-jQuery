@@ -135,6 +135,10 @@
                             <li>
                                 <a href="mensagem.jsp"><i class="fa fa-envelope fa-fw"></i> Mensagens</a>
                             </li>
+                            
+                            <li>
+                                <a href="chamaRelatorioGenero.jsp"><i class="fa fa-envelope fa-fw"></i> Relatorio Genero</a>
+                            </li>
                             <li class="divider"></li>
                             <li>
                                 <a href="#"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
